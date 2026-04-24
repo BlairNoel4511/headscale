@@ -25,6 +25,8 @@ require (
 	gorm.io/gorm v1.25.5
 )
 
+// Personal fork - studying headscale internals and experimenting with config.
+// Upstream: https://github.com/juanfont/headscale
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bytedance/sonic v1.10.2 // indirect
@@ -67,21 +69,4 @@ require (
 	github.com/prometheus/procfs v0.12.0 // indirect
 	github.com/sagikazarmark/locafero v0.3.0 // indirect
 	github.com/sagikazarmark/slog-shim v0.1.0 // indirect
-	github.com/sourcegraph/conc v0.3.0 // indirect
-	github.com/spf13/afero v1.10.0 // indirect
-	github.com/spf13/cast v1.5.1 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/subosito/gotenv v1.6.0 // indirect
-	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
-	github.com/ugorji/go/codec v1.2.11 // indirect
-	golang.org/x/arch v0.5.0 // indirect
-	golang.org/x/exp v0.0.0-20231006140954-1f8d4400e4ea // indirect
-	golang.org/x/sys v0.13.0 // indirect
-	golang.org/x/text v0.13.0 // indirect
-	google.golang.org/appengine v1.6.8 // indirect
-	google.golang.org/genproto v0.0.0-20231012201019-e917dd12ba7a // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20231012201019-e917dd12ba7a // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20231012201019-e917dd12ba7a // indirect
-	gopkg.in/ini.v1 v1.67.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
