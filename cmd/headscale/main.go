@@ -1,0 +1,70 @@
+package main
+
+import (
+	"fmt"
+	"os"
+
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
+	"github.com/spf13/cobra"
+)
+
+var (
+	// Version is set at build time via ldflags.
+	Version = "dev"
+	// Commit is set at build time via ldflags.
+	Commit = "none"
+	// Date is set at build time via ldflags.
+	Date = "unknown"
+)
+
+var rootCmd = &cobra.Command{
+	Use:   "headscale",
+	Short: "headscale - a self-hosted Tailscale control server",
+	Long: `headscale is an open source, self-hosted implementation
+of the Tailscale control server.`,
+	SilenceUsage: true,
+}
+
+var versionCmd = &cobra.Command{
+	Use:   "version",
+	Short: "Print the version information",
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Printf("headscale version %s\n", Version)
+		fmt.Printf("  commit: %s\n", Commit)
+		fmt.Printf("  built:  %s\n", Date)
+	},
+}
+
+func init() {
+	// Configure zerolog to output human-friendly logs in development.
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+
+	rootCmd.PersistentFlags().StringP(
+		"config",
+		"c",
+		"",
+		"Path to the headscale configuration file",
+	)
+
+	rootCmd.PersistentFlags().String(
+		"output",
+		"",
+		"Output format (json, yaml, or empty for human-readable)",
+	)
+
+	rootCmd.PersistentFlags().Bool(
+		"verbose",
+		false,
+		"Enable verbose (debug) logging",
+	)
+
+	rootCmd.AddCommand(versionCmd)
+}
+
+func main() {
+	if err := rootCmd.Execute(); err != nil {
+		log.Error().Err(err).Msg("Failed to execute command")
+		os.Exit(1)
+	}
+}
