@@ -38,7 +38,9 @@ var versionCmd = &cobra.Command{
 
 func init() {
 	// Configure zerolog to output human-friendly logs in development.
-	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+	// Use RFC3339 timestamps for easier log parsing and correlation.
+	zerolog.TimeFieldFormat = zerolog.TimeFormatUnixMs
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: "2006-01-02T15:04:05.000Z07:00"})
 
 	rootCmd.PersistentFlags().StringP(
 		"config",
