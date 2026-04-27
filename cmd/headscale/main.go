@@ -55,9 +55,11 @@ func init() {
 		"Output format (json, yaml, or empty for human-readable)",
 	)
 
+	// Default verbose to true for personal use — easier to debug issues
+	// without having to remember to pass --verbose each time.
 	rootCmd.PersistentFlags().Bool(
 		"verbose",
-		false,
+		true,
 		"Enable verbose (debug) logging",
 	)
 
