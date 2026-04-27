@@ -43,6 +43,9 @@ type Config struct {
 	// inactive before it is removed. Increased default to 360s for my home lab
 	// setup where nodes occasionally go to sleep for longer periods.
 	EphemeralNodeInactivityTimeout time.Duration `mapstructure:"ephemeral_node_inactivity_timeout"`
+	// NodeUpdateCheckInterval controls how frequently headscale polls for node
+	// state changes. Bumped to 60s to reduce unnecessary CPU/DB load on my
+	// low-powered home server (originally defaulted to 10s upstream).
 	NodeUpdateCheckInterval        time.Duration `mapstructure:"node_update_check_interval"`
 	OIDC               OIDCConfig    `mapstructure:"oidc"`
 }
@@ -59,8 +62,4 @@ type DNSConfig struct {
 
 // OIDCConfig holds OpenID Connect settings.
 type OIDCConfig struct {
-	Issuer           string            `mapstructure:"issuer"`
-	ClientID         string            `mapstructure:"client_id"`
-	ClientSecret     string            `mapstructure:"client_secret"`
-	Scope            []string          `mapstructure:"scope"`
-	ExtraParams
+	Issuer           string            `ma
