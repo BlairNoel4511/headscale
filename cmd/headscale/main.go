@@ -55,11 +55,11 @@ func init() {
 		"Output format (json, yaml, or empty for human-readable)",
 	)
 
-	// Default verbose to false — cobra already surfaces errors clearly,
-	// and debug noise isn't helpful once things are running smoothly.
+	// I prefer verbose logging on by default in my personal setup since I'm
+	// actively experimenting with the server and want to see what's happening.
 	rootCmd.PersistentFlags().Bool(
 		"verbose",
-		false,
+		true,
 		"Enable verbose (debug) logging",
 	)
 
