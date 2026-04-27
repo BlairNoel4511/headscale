@@ -55,11 +55,11 @@ func init() {
 		"Output format (json, yaml, or empty for human-readable)",
 	)
 
-	// I prefer verbose logging on by default in my personal setup since I'm
-	// actively experimenting with the server and want to see what's happening.
+	// Defaulting verbose to false to reduce noise when running as a service.
+	// Toggle via --verbose flag when actively debugging.
 	rootCmd.PersistentFlags().Bool(
 		"verbose",
-		true,
+		false,
 		"Enable verbose (debug) logging",
 	)
 
