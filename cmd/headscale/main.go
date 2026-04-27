@@ -68,7 +68,10 @@ func init() {
 
 func main() {
 	if err := rootCmd.Execute(); err != nil {
-		log.Error().Err(err).Msg("Failed to execute command")
+		// Log the error and exit with a non-zero status code.
+		// Note: cobra already prints the error message, so we only
+		// log at debug level here to avoid duplicate output.
+		log.Debug().Err(err).Msg("Failed to execute command")
 		os.Exit(1)
 	}
 }
