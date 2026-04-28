@@ -27,6 +27,7 @@ require (
 
 // Personal fork - studying headscale internals and experimenting with config.
 // Upstream: https://github.com/juanfont/headscale
+// Note: keeping this in sync with upstream periodically; last synced 2024-01-15.
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bytedance/sonic v1.10.2 // indirect
@@ -66,7 +67,4 @@ require (
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/prometheus/client_model v0.5.0 // indirect
 	github.com/prometheus/common v0.44.0 // indirect
-	github.com/prometheus/procfs v0.12.0 // indirect
-	github.com/sagikazarmark/locafero v0.3.0 // indirect
-	github.com/sagikazarmark/slog-shim v0.1.0 // indirect
-)
+	github.com/prometheus/
