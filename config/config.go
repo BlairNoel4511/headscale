@@ -47,6 +47,10 @@ type Config struct {
 	// state changes. Bumped to 60s to reduce unnecessary CPU/DB load on my
 	// low-powered home server (originally defaulted to 10s upstream).
 	NodeUpdateCheckInterval        time.Duration `mapstructure:"node_update_check_interval"`
+	// MaxMachinesPerUser limits the number of machines a single user can register.
+	// Set to 15 for my home lab — enough headroom without letting things get out
+	// of hand if a registration script goes rogue.
+	MaxMachinesPerUser int          `mapstructure:"max_machines_per_user"`
 	OIDC               OIDCConfig    `mapstructure:"oidc"`
 }
 
@@ -56,10 +60,4 @@ type DNSConfig struct {
 	Nameservers      []string `mapstructure:"nameservers"`
 	RestrictedNameservers map[string][]string `mapstructure:"restricted_nameservers"`
 	Domains          []string `mapstructure:"domains"`
-	MagicDNS         bool     `mapstructure:"magic_dns"`
-	BaseDomain       string   `mapstructure:"base_domain"`
-}
-
-// OIDCConfig holds OpenID Connect settings.
-type OIDCConfig struct {
-	Issuer           string            `ma
+	Mag
